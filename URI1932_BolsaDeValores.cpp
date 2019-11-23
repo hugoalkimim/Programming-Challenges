@@ -46,14 +46,14 @@ void bottomUp()
 {
     //Caso base
     dp[N - 1][0] = 0;
-	dp[N - 1][1] = val[N - 1];
+    dp[N - 1][1] = val[N - 1];
 
-	// Começa a resolver pelas partes que são dependencias primeiro
-	for(lli i = N - 2; i >= 0; i--)
-	{
-		dp[i][0] = max(-val[i] - C + dp[i + 1][1], dp[i + 1][0]);
-		dp[i][1] = max(val[i] + dp[i + 1][0], dp[i + 1][1]);
-	}
+    // Começa a resolver pelas partes que são dependencias primeiro
+    for(lli i = N - 2; i >= 0; i--)
+    {
+        dp[i][0] = max(-val[i] - C + dp[i + 1][1], dp[i + 1][0]);
+        dp[i][1] = max(val[i] + dp[i + 1][0], dp[i + 1][1]);
+    }
 }
 
 // Otimização para reduzir gasto de memória
@@ -61,30 +61,30 @@ void bottomUpOtimizado()
 {
     dpO[(N - 1) % 2][0] = 0;
     dpO[(N - 1) % 2][1] = val[N - 1];
-	for(lli i = N - 2; i >= 0; i--)
-	{
-		dpO[i % 2][0] = max(-val[i] - C + dpO[(i + 1) % 2][1], dpO[(i + 1) % 2][0]);
-		dpO[i % 2][1] = max(val[i] + dpO[(i + 1) % 2][0], dpO[(i + 1) % 2][1]);
-	}
+    for(lli i = N - 2; i >= 0; i--)
+    {
+        dpO[i % 2][0] = max(-val[i] - C + dpO[(i + 1) % 2][1], dpO[(i + 1) % 2][0]);
+        dpO[i % 2][1] = max(val[i] + dpO[(i + 1) % 2][0], dpO[(i + 1) % 2][1]);
+    }
 }
 
 int main()
 {
-	scanf("%lld %lld", &N, &C);
+    scanf("%lld %lld", &N, &C);
 
-	for(lli i = 0; i < N; i++)
-	{
-		scanf("%lld", &val[i]);
-	}
+    for(lli i = 0; i < N; i++)
+    {
+        scanf("%lld", &val[i]);
+    }
 
-	//printf("%lld\n", topDown(0, 0));
+    //printf("%lld\n", topDown(0, 0));
 
     //bottomUp();
-	//printf("%lld\n", dp[0][0]);
+    //printf("%lld\n", dp[0][0]);
 
     bottomUpOtimizado();
     printf("%lld\n", dpO[0][0]);
 
 
-    	return 0;
+    return 0;
 }
