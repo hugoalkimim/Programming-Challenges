@@ -44,8 +44,11 @@ lli topDown(lli pos, lli estado)
 
 void bottomUp()
 {
+    //Caso base
     dp[N - 1][0] = 0;
 	dp[N - 1][1] = val[N - 1];
+
+	// Começa a resolver pelas partes que são dependencias primeiro
 	for(lli i = N - 2; i >= 0; i--)
 	{
 		dp[i][0] = max(-val[i] - C + dp[i + 1][1], dp[i + 1][0]);
@@ -57,7 +60,7 @@ void bottomUp()
 void bottomUpOtimizado()
 {
     dpO[(N - 1) % 2][0] = 0;
-	dpO[(N - 1) % 2][1] = val[N - 1];
+    dpO[(N - 1) % 2][1] = val[N - 1];
 	for(lli i = N - 2; i >= 0; i--)
 	{
 		dpO[i % 2][0] = max(-val[i] - C + dpO[(i + 1) % 2][1], dpO[(i + 1) % 2][0]);
