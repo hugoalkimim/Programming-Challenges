@@ -4,9 +4,9 @@ Hugo Danilo Santos Alkimim
 
 #include <bits/stdc++.h>
 
-using namespace std;
-
 #define NMAX 1111
+
+using namespace std;
 
 typedef long long int lli;
 typedef pair < lli, lli > par;
