@@ -1,3 +1,7 @@
+/*******************************************
+Hugo Danilo Santos Alkimim
+********************************************/
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -12,6 +16,8 @@ lli w[NMAX];
 par dp[NMAX][NMAX];
 par dpO[2][NMAX];
 
+// DP na posição inicial e final do vetor
+// Verifico de quem é a vez e calculo se a opção otima para o jogador atual é retirar o primeiro elemento ou o segundo
 void bottomUp()
 {
     for(lli i = N - 1; i >= 0; i--)
