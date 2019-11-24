@@ -16,11 +16,13 @@ int dpO[NMAX][NMAX];
 // DP no item atual e na capacidade da mochila
 void bottomUp(int capacidade, int qnt_itens)
 {
+    // Zera os valores para o item vazio/nulo
     for(int i = 0; i <= capacidade; i++)
     {
         dp[0][i] = 0;
     }
 
+    // Zera os valores para todas as mochilas com capacidade 0
     for(int i = 0; i <= qnt_itens; i++)
     {
         dp[i][0] = 0;
